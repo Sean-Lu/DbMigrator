@@ -1,0 +1,12 @@
+CREATE TABLE `Test001` (
+  `Id` INTEGER NOT NULL,
+  `Name` TEXT,
+  PRIMARY KEY (`Id`)
+);
+
+
+CREATE TABLE `Test002` (
+  `Id` INTEGER NOT NULL,
+  `Name` TEXT,
+  PRIMARY KEY (`Id`)
+);

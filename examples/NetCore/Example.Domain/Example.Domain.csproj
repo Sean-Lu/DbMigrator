@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Sean.Core.DbRepository.Dapper" Version="2.1.10-preview03" />
+		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.117" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\src\Sean.Core.DbMigrator\Sean.Core.DbMigrator.csproj" />
+		<ProjectReference Include="..\Example.Infrastructure\Example.Infrastructure.csproj" />
+		<ProjectReference Include="..\Example.Model\Example.Model.csproj" />
+	</ItemGroup>
+
+	<!-- Automatically include all *.sql files as embedded resources, for use with Migration.Execute.EmbeddedScript(string EmbeddedSqlScriptName) -->
+	<ItemGroup>
+		<EmbeddedResource Include="**/*.sql" />
+	</ItemGroup>
+
+</Project>

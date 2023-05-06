@@ -1,0 +1,5 @@
+﻿CREATE TABLE `Test101` (
+  `Id` INTEGER NOT NULL,
+  `Name` TEXT,
+  PRIMARY KEY (`Id`)
+);

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Sean.Core.DbMigrator\Sean.Core.DbMigrator.csproj" />
+    <ProjectReference Include="..\Example.Domain\Example.Domain.csproj" />
+    <ProjectReference Include="..\Example.Infrastructure\Example.Infrastructure.csproj" />
+    <ProjectReference Include="..\Example.Model\Example.Model.csproj" />
+  </ItemGroup>
+
+</Project>
