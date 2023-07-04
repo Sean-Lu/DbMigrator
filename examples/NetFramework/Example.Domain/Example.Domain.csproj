@@ -62,10 +62,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Sean.Core.DbRepository.Dapper">
-      <Version>2.1.10-preview03</Version>
+      <Version>2.1.12</Version>
     </PackageReference>
     <PackageReference Include="System.Data.SQLite.Core">
-      <Version>1.0.117</Version>
+      <Version>1.0.118</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,7 @@ using Sean.Core.DbRepository.Dapper;
 
 namespace Example.Domain.Repositories
 {
-    public class TestRepository : BaseRepository<TestEntity>, ITestRepository
+    public class TestRepository : DapperBaseRepository<TestEntity>, ITestRepository
     {
         public TestRepository() : base(DbContext.ConnString, DatabaseType.SQLite)
         {

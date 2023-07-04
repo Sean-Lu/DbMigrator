@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Example.Domain.Contracts;
 using Example.Domain.Entities;
 using Sean.Core.DbMigrator;
@@ -7,7 +8,7 @@ using Sean.Core.DbRepository.Dapper;
 
 namespace Example.Domain.Repositories
 {
-    public class MigrationHistoryRepository : BaseRepository<MigrationHistoryEntity>, IMigrationHistoryRepository
+    public class MigrationHistoryRepository : DapperBaseRepository<MigrationHistoryEntity>, IMigrationHistoryRepository
     {
         public MigrationHistoryRepository() : base(DbContext.ConnString, DatabaseType.SQLite)
         {
@@ -30,9 +31,13 @@ namespace Example.Domain.Repositories
             return tableName;
         }
 
-        public override string CreateTableSql(string tableName)
+        protected override ExecuteSqlOptions CreateTableSql(string tableName)
         {
-            return $@"CREATE TABLE `{tableName}` (
+            string sql;
+            switch (DbType)
+            {
+                case DatabaseType.SQLite:
+                    sql = $@"CREATE TABLE `{tableName}` (
   `Id` integer NOT NULL PRIMARY KEY AUTOINCREMENT,
   `Version` integer NOT NULL,
   `MigrationClass` text,
@@ -41,6 +46,14 @@ namespace Example.Domain.Repositories
   `ExecutionTime` text NOT NULL,
   `ExecutionElapsed` integer NOT NULL
 );";
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+            return new ExecuteSqlOptions
+            {
+                Sql = sql
+            };
         }
 
         public long GetCurrentVersion()
