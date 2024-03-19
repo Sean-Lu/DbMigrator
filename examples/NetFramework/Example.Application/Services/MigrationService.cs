@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using Example.Application.Contracts;
 using Example.Domain.DB.Migrations;
 using Example.Infrastructure;

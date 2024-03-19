@@ -1,7 +1,6 @@
 ﻿using Example.Application.Contracts;
 using Example.Domain.Contracts;
 using Example.Domain.Entities;
-using Example.Domain.Repositories;
 
 namespace Example.Application.Services
 {
