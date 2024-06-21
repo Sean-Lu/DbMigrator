@@ -5,7 +5,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Sean.Core.DbRepository.Dapper" Version="2.1.14" />
+		<PackageReference Include="Sean.Core.DbRepository.Dapper" Version="2.1.15" />
 		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
 	</ItemGroup>
 
