@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IEntityId.cs" />
     <Compile Include="DbContext.cs" />
     <Compile Include="DB\MigrationFactory.cs" />
     <Compile Include="DB\Migrations\20220501__InitDatabase.cs" />

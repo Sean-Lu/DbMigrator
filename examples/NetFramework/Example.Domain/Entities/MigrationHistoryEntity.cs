@@ -1,12 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Example.Domain.Contracts;
 using Sean.Core.DbMigrator;
 
 namespace Example.Domain.Entities
 {
     [Table("__MigrationHistory")]
-    public class MigrationHistoryEntity : IMigrationHistoryEntity
+    public class MigrationHistoryEntity : IMigrationHistoryEntity, IEntityId
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public virtual long Id { get; set; }

@@ -5,7 +5,6 @@ using Dapper;
 using Example.Domain.Contracts;
 using Example.Domain.Entities;
 using Sean.Core.DbMigrator;
-using Sean.Core.DbRepository;
 using Sean.Utility.Contracts;
 
 namespace Example.Domain.DB
@@ -23,20 +22,6 @@ namespace Example.Domain.DB
             _migrationHistoryRepository = migrationHistoryRepository;
             _logger = logger;
         }
-
-        //public void CreateTableIfNotExist()
-        //{
-        //    // Check whether the table exists.
-        //    if (_migrationHistoryRepository.IsTableExists(_migrationHistoryRepository.TableName()))
-        //    {
-        //        // Table already exists.
-        //        return;
-        //    }
-
-        //    // Create 'MigrationHistory' table.
-        //    var sql = _migrationHistoryRepository.CreateTableSql(_migrationHistoryRepository.TableName());
-        //    _migrationHistoryRepository.Execute(c => c.Execute(sql));
-        //}
 
         public long GetCurrentVersion()
         {

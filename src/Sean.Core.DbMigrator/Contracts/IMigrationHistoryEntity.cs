@@ -8,10 +8,6 @@ namespace Sean.Core.DbMigrator;
 public interface IMigrationHistoryEntity
 {
     /// <summary>
-    /// Primary key
-    /// </summary>
-    long Id { get; set; }
-    /// <summary>
     /// Migration version
     /// </summary>
     long Version { get; set; }
