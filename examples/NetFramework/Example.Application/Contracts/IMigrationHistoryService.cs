@@ -1,9 +1,10 @@
-﻿using Example.Domain.Entities;
+﻿using Example.Application.Dtos;
+using System.Collections.Generic;
 
 namespace Example.Application.Contracts
 {
     public interface IMigrationHistoryService
     {
-        bool Add(MigrationHistoryEntity model);
+        List<MigrationHistoryDto> Search(int? pageNumber = null, int? pageSize = null);
     }
 }

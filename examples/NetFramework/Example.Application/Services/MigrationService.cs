@@ -26,8 +26,8 @@ namespace Example.Application.Services
                     var migrationPaths = new[] { "DB", "Migrations" };
 
                     options.Assemblies = new[] { typeof(_20220501__InitDatabase).Assembly };
-                    options.ScriptBaseDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Join("\\", sqlScriptPaths));// Base directory for SQL scripts.
-                    options.EmbeddedScriptNamespace = $"{sqlAssemblyName}.{string.Join(".", sqlScriptPaths)}";// Namespace for embedded SQL scripts.
+                    options.ScriptBaseDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Join("\\", sqlScriptPaths));// SQL脚本相对路径
+                    options.EmbeddedScriptNamespace = $"{sqlAssemblyName}.{string.Join(".", sqlScriptPaths)}";// SQL脚本命名空间（嵌入的资源）
                     options.AllowEmptyMigrationItems = true;// Whether to allow empty <MigrationItems> in migration classes.
                     //options.MigrationFilter = type => type.Namespace == $"{sqlAssemblyName}.{string.Join(".", migrationPaths)}";// Migration class filter.
                     options.MigrationInstanceFactory = migrationClassType =>
@@ -35,7 +35,7 @@ namespace Example.Application.Services
                         if (typeof(Migration).IsAssignableFrom(migrationClassType))
                         {
                             // Using dependency Injection for migration classes.
-                            return (Migration)DependencyManager.Container.Resolve(migrationClassType);
+                            return DIManager.Resolve<Migration>(migrationClassType);
                         }
 
                         return null;
@@ -49,8 +49,8 @@ namespace Example.Application.Services
                     };
                 });
             var migrationRunner = migrationBuilder.Build(_migrationFactory);
+            //migrationRunner.Execute(20220502113510);
             migrationRunner.Upgrade();
-            //migrationRunner.Execute(20220502113510);// Only the specified version is executed, ignoring the current database version.
         }
     }
 }

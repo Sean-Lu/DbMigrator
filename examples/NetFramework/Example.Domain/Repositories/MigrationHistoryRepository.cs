@@ -8,7 +8,7 @@ namespace Example.Domain.Repositories
 {
     public class MigrationHistoryRepository : DapperBaseRepository<MigrationHistoryEntity>, IMigrationHistoryRepository
     {
-        public MigrationHistoryRepository() : base(DbContext.ConnString, DatabaseType.SQLite)
+        public MigrationHistoryRepository() : base(new MultiConnectionSettings(DbContext.MainDbOptions))
         {
         }
 
@@ -25,6 +25,12 @@ namespace Example.Domain.Repositories
             orderBy.Next = OrderByConditionBuilder<MigrationHistoryEntity>.Build(OrderByType.Desc, entity => entity.Id);
             var migrationHistoryEntity = Query(entity => entity.Success, orderBy, 1, 1)?.FirstOrDefault();
             return migrationHistoryEntity?.Version ?? -1;
+        }
+
+        public void ChangeDatabase(ConnectionStringOptions options)
+        {
+            Factory.ConnectionSettings.Clear();
+            Factory.ConnectionSettings.Add(options);
         }
     }
 }

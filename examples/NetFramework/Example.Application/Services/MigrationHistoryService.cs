@@ -1,6 +1,11 @@
 ﻿using Example.Application.Contracts;
 using Example.Domain.Contracts;
 using Example.Domain.Entities;
+using Sean.Core.DbRepository;
+using System.Collections.Generic;
+using System.Linq;
+using Example.Application.Dtos;
+using Sean.Utility.Format;
 
 namespace Example.Application.Services
 {
@@ -13,9 +18,11 @@ namespace Example.Application.Services
             _migrationHistoryRepository = migrationHistoryRepository;
         }
 
-        public bool Add(MigrationHistoryEntity model)
+        public List<MigrationHistoryDto> Search(int? pageNumber = null, int? pageSize = null)
         {
-            return _migrationHistoryRepository.Add(model);
+            var orderBy = OrderByConditionBuilder<MigrationHistoryEntity>.Build(OrderByType.Desc, entity => entity.ExecutionTime);
+            orderBy.Next = OrderByConditionBuilder<MigrationHistoryEntity>.Build(OrderByType.Desc, entity => entity.Id);
+            return _migrationHistoryRepository.Query(entity => true, orderBy, pageNumber, pageSize)?.Select(entity => ObjectConvert.MapProperties<MigrationHistoryDto>(entity)).ToList();
         }
     }
 }

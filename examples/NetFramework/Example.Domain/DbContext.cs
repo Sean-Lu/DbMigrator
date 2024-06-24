@@ -1,8 +1,14 @@
-﻿namespace Example.Domain
+﻿using Sean.Core.DbRepository;
+
+namespace Example.Domain
 {
     public class DbContext
     {
-        //public static string ConnString = @"data source=.\test.db;version=3;DatabaseType=SQLite";
-        public static string ConnString = @"data source=.\test.db;version=3";
+        /// <summary>
+        /// 主数据库
+        /// </summary>
+        public static readonly ConnectionStringOptions MainDbOptions = ConnectionStringOptions.Create(@"data source=.\test.db;pooling=True;journal mode=Wal", DatabaseType.SQLite);
+
+        public static DatabaseType DatabaseType => MainDbOptions.DbType;
     }
 }

@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IEntityId.cs" />
+    <Compile Include="Contracts\IMultiMigrationFactory.cs" />
     <Compile Include="DbContext.cs" />
     <Compile Include="DB\MigrationFactory.cs" />
     <Compile Include="DB\Migrations\20220501__InitDatabase.cs" />
@@ -78,12 +79,9 @@
       <Project>{f53bebf9-4001-407c-8530-14feebac34ff}</Project>
       <Name>Example.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Example.Model\Example.Model.csproj">
-      <Project>{ee78c4b5-e1ba-4606-907d-4485e17e88ae}</Project>
-      <Name>Example.Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DB\README.md" />
     <None Include="DB\Scripts\20220501__InitDatabase.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

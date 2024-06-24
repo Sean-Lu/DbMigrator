@@ -7,7 +7,7 @@ namespace Example.Domain.Repositories
 {
     public class TestRepository : DapperBaseRepository<TestEntity>, ITestRepository
     {
-        public TestRepository() : base(DbContext.ConnString, DatabaseType.SQLite)
+        public TestRepository() : base(new MultiConnectionSettings(DbContext.MainDbOptions))
         {
         }
     }

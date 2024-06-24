@@ -6,6 +6,10 @@ namespace Example.Application.Extensions
 {
     public static class DIExtensions
     {
+        /// <summary>
+        /// 应用层依赖注入
+        /// </summary>
+        /// <param name="container"></param>
         public static void AddApplicationDI(this IDIRegister container)
         {
             container.AddDomainDI();

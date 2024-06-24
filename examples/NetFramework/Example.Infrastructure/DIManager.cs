@@ -3,9 +3,12 @@ using Sean.Core.DependencyInjection;
 
 namespace Example.Infrastructure
 {
-    public class DependencyManager
+    /// <summary>
+    /// 依赖注入容器管理
+    /// </summary>
+    public class DIManager
     {
-        public static IDIResolve Container => _container;
+        //public static IDIResolve Container => _container;
 
         private static IDIContainer _container;
 
@@ -14,13 +17,20 @@ namespace Example.Infrastructure
             if (_container == null)
             {
                 var builder = new ContainerBuilder();
-
                 var container = builder.Build();
-
                 _container = container;
             }
 
             action?.Invoke(_container);
+        }
+
+        public static TService Resolve<TService>()
+        {
+            return _container.Resolve<TService>();
+        }
+        public static TService Resolve<TService>(Type serviceType)
+        {
+            return (TService)_container.Resolve(serviceType);
         }
     }
 }

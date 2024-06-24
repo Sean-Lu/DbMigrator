@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\MigrationHistoryDto.cs" />
     <Compile Include="Extensions\DIExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Contracts\ITestService.cs" />
@@ -49,9 +50,6 @@
     <Compile Include="Services\MigrationHistoryService.cs" />
     <Compile Include="Services\MigrationService.cs" />
     <Compile Include="Services\TestService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dtos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Sean.Core.DbMigrator\Sean.Core.DbMigrator.csproj">
@@ -65,10 +63,6 @@
     <ProjectReference Include="..\Example.Infrastructure\Example.Infrastructure.csproj">
       <Project>{f53bebf9-4001-407c-8530-14feebac34ff}</Project>
       <Name>Example.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Example.Model\Example.Model.csproj">
-      <Project>{ee78c4b5-e1ba-4606-907d-4485e17e88ae}</Project>
-      <Name>Example.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -3,7 +3,7 @@ using System;
 
 namespace Example.Domain.DB.Migrations
 {
-    [Migration(20220502103010, Description = "新增用户表")]//yyyyMMddHHmmss
+    [Migration(20220502103010, Description = "新增用户表")]
     public class _20220502__CreateUserTable : Migration
     {
         public override bool CanRollback => false;

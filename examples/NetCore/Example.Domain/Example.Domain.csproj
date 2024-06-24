@@ -12,7 +12,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\src\Sean.Core.DbMigrator\Sean.Core.DbMigrator.csproj" />
 		<ProjectReference Include="..\Example.Infrastructure\Example.Infrastructure.csproj" />
-		<ProjectReference Include="..\Example.Model\Example.Model.csproj" />
 	</ItemGroup>
 
 	<!-- Automatically include all *.sql files as embedded resources, for use with Migration.Execute.EmbeddedScript(string EmbeddedSqlScriptName) -->

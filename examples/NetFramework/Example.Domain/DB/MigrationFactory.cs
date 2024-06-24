@@ -5,22 +5,23 @@ using Dapper;
 using Example.Domain.Contracts;
 using Example.Domain.Entities;
 using Sean.Core.DbMigrator;
+using Sean.Core.DbRepository;
 using Sean.Utility.Contracts;
 
 namespace Example.Domain.DB
 {
-    public class MigrationFactory : IMigrationFactory
+    public class MigrationFactory : IMultiMigrationFactory
     {
-        private readonly IMigrationHistoryRepository _migrationHistoryRepository;
         private readonly ILogger _logger;
+        private readonly IMigrationHistoryRepository _migrationHistoryRepository;
 
         public MigrationFactory(
-            IMigrationHistoryRepository migrationHistoryRepository,
-            ILogger<MigrationFactory> logger
+            ILogger<MigrationFactory> logger,
+            IMigrationHistoryRepository migrationHistoryRepository
             )
         {
-            _migrationHistoryRepository = migrationHistoryRepository;
             _logger = logger;
+            _migrationHistoryRepository = migrationHistoryRepository;
         }
 
         public long GetCurrentVersion()
@@ -71,7 +72,12 @@ namespace Example.Domain.DB
 
             _logger.LogError("Database migration error.", exception);// Log exception information.
 
-            //context.AddHistory = false;// Whether to insert migration history. The default value is true.
+            context.AddHistory = false;// Whether to insert migration history. The default value is true.
+        }
+
+        public void ChangeDatabase(ConnectionStringOptions options)
+        {
+            _migrationHistoryRepository.ChangeDatabase(options);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.IO;
 using Example.Application.Contracts;
 using Example.Application.Extensions;
 using Example.Infrastructure;
+using Newtonsoft.Json;
 
 namespace Example.ConsoleApp
 {
@@ -12,15 +13,19 @@ namespace Example.ConsoleApp
         {
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);// 设置当前工作目录：@".\"
 
-            //JsonHelper.Serializer = NewJsonSerializer.Instance;
-
-            DependencyManager.Register(container =>
+            DIManager.Register(container =>
             {
                 container.AddApplicationDI();
             });
 
-            IMigrationService migrationService = DependencyManager.Container.Resolve<IMigrationService>();
+            IMigrationService migrationService = DIManager.Resolve<IMigrationService>();
             migrationService.Upgrade();
+
+            IMigrationHistoryService migrationHistoryService = DIManager.Resolve<IMigrationHistoryService>();
+            var migrationHistoryList = migrationHistoryService.Search(1, 10);
+            Console.WriteLine("=========================================================");
+            Console.WriteLine($"数据库升级历史（最新10条）：{Environment.NewLine}{JsonConvert.SerializeObject(migrationHistoryList, Formatting.Indented)}");
+            Console.WriteLine("=========================================================");
 
             Console.WriteLine("Done.");
             Console.ReadLine();

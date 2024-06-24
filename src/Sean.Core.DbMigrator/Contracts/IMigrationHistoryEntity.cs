@@ -31,5 +31,4 @@ public interface IMigrationHistoryEntity
     /// The total elapsed time of execution, in milliseconds.
     /// </summary>
     long ExecutionElapsed { get; set; }
-
 }
