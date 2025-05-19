@@ -6,4 +6,8 @@
 		<Description>Database migration framework.</Description>
 		<Version>1.0.4</Version>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
 </Project>
