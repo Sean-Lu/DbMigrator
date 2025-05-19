@@ -6,3 +6,12 @@ public enum MigrationType
     Script,
     EmbeddedScript
 }
+
+public enum MigrationStep
+{
+    MigrationNothing,
+    MigrationWaiting,
+    MigrationItemExecuting,
+    MigrationItemExecuted,
+    MigrationComplete
+}

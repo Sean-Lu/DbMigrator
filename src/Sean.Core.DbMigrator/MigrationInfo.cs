@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Sean.Core.DbMigrator;
 
-internal class MigrationInfo
+public class MigrationInfo
 {
     /// <summary>
     /// Migration version
@@ -20,4 +20,6 @@ internal class MigrationInfo
     public string ScriptFilePath { get; set; }
     public bool EmbeddedScript { get; set; }
     public Assembly Assembly { get; set; }
+
+    public bool Success { get; set; }
 }

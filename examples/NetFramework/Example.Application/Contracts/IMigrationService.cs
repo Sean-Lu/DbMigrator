@@ -1,7 +1,10 @@
-﻿namespace Example.Application.Contracts
+﻿using System;
+using Sean.Core.DbMigrator;
+
+namespace Example.Application.Contracts
 {
     public interface IMigrationService
     {
-        void Upgrade();
+        bool Upgrade(Action<MigrationCallbackContext> callback = null);
     }
 }

@@ -55,6 +55,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Sean.Core.DbMigrator\Sean.Core.DbMigrator.csproj">
+      <Project>{C462B8CA-4EDE-4677-8A85-B9359043DD13}</Project>
+      <Name>Sean.Core.DbMigrator</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Example.Application\Example.Application.csproj">
       <Project>{c18e70d1-4dcb-4249-b4ad-91cb8ae30271}</Project>
       <Name>Example.Application</Name>

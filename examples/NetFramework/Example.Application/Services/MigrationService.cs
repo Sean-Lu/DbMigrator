@@ -16,7 +16,7 @@ namespace Example.Application.Services
             _migrationFactory = migrationFactory;
         }
 
-        public void Upgrade()
+        public bool Upgrade(Action<MigrationCallbackContext> callback = null)
         {
             var migrationBuilder = MigrationManager.CreateDefaultBuilder()
                 .ConfigureRunner(options =>
@@ -49,8 +49,7 @@ namespace Example.Application.Services
                     };
                 });
             var migrationRunner = migrationBuilder.Build(_migrationFactory);
-            //migrationRunner.Execute(20220502113510);
-            migrationRunner.Upgrade();
+            return migrationRunner.Upgrade(callback);
         }
     }
 }
