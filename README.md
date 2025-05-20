@@ -9,6 +9,7 @@
 ## ⭐ 开源
 
 - GitHub: https://github.com/Sean-Lu/DbMigrator
+- Gitee: https://gitee.com/Sean-Lu/DbMigrator
 
 ## 💖 Nuget Packages
 
