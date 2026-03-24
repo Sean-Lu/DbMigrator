@@ -2,7 +2,7 @@
 	<Import Project="../../config/Common.props" />
 
 	<PropertyGroup>
-		<TargetFrameworks>net45;net6;netstandard2.0</TargetFrameworks>
+		<TargetFrameworks>net45;net8;netstandard2.0</TargetFrameworks>
 		<Description>Database migration framework.</Description>
 		<Version>1.0.4</Version>
 	</PropertyGroup>
